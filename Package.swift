@@ -22,6 +22,10 @@ let package = Package(
         .testTarget(
             name: "filesTests",
             dependencies: ["files"],
+            resources: [
+              // wir nutzen process statt copy um eine flache Kopie in das Testverzeichnis zu legen
+              .process("testdaten")
+            ]
         ),
     ]
 )

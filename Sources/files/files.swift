@@ -4,6 +4,7 @@
 //
 
 import ArgumentParser
+import Foundation
 
 @main struct files : AsyncParsableCommand, CustomStringConvertible {
   
@@ -14,7 +15,7 @@ import ArgumentParser
   static let CALLED = CommandLine.arguments[0]
   
   /// Version des Produkts
-  static let VERSION = "0.1"
+  static let VERSION = "1.0"
   
   static let configuration = CommandConfiguration (
     commandName: NAMED,
@@ -24,7 +25,10 @@ import ArgumentParser
       https://github.com/bastie/files
       """,
     usage: "\(CALLED) <filename>",
-    version: "\(NAMED) v\(VERSION)"
+    version: """
+    \(NAMED)-\(VERSION)
+    magic included
+    """
   )
 
   /// Eine Texttuelle Beschreibung (`CustomStringConvertible`) dieses Typs
@@ -33,9 +37,25 @@ import ArgumentParser
     Version \(VERSION)
     """}()
   
+  @Argument(help: "files to check")
+  var files : [String]
   
   mutating func run() throws {
-    print(self)
+    for file in files {
+      var result : Format?
+      switch (try FileDispatcher.identify(url: URL(filePath: file))) {
+      case .failure : result = nil
+      case .success(let format) : result = format
+      }
+      
+      if let result {
+        // MARK: hier können zusätzliche Informationen gesammelt werden
+        
+        print ("""
+          \(file): \(result.rawValue.name)
+          """)
+      }
+    }
   }
 }
 

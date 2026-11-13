@@ -6,8 +6,18 @@
 import Testing
 @testable import files
 
-@Test func example() async throws {
-    // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-    // Swift Testing Documentation
-    // https://swiftpackageindex.com/swiftlang/swift-testing/documentation
+import Foundation
+
+@Test func testDetect() async throws {
+  let url = Bundle.module.url(forResource: "ZIP", withExtension: "zip")
+  
+  var type : String = "application/octet-stream"
+  
+  switch (try FileDispatcher.identify(url: url)) {
+  case .failure : type = "application/octet-stream"
+  case .success(let format) : type = format.rawValue.name
+  }
+  
+  assert(type == Format.ZIP.rawValue.name)
 }
+

@@ -13,6 +13,10 @@ Implementierung einer DSL parallel zur eigentlichen Aufgabe.
 
 ## Topics
 
-### Gruppen
+### Einsprungspunkt
 
 - ``files``
+
+### Eingabe / Ausgabe
+
+- ``FilePartReader``
