@@ -1,0 +1,21 @@
+# reuse header
+
+# SPDX-FileCopyrightText: © 2026 Sebastian Ritter. Alle Rechte vorbehalten.
+# SPDX-License-Identifier: Apache-2.0
+
+
+# macOS
+.DS_Store
+
+# SPM / XCode
+/.build
+/Packages
+xcuserdata/
+DerivedData/
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
+
+
+# Die Version abhängiger Produkte wird auf exact gesetzt (Security), so dass Package.resolved nicht ins SCM muss
+Package.resolved

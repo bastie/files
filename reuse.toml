@@ -1,0 +1,24 @@
+version = 1
+
+
+# Die NOTICE Datei gehört zur Apache-2.0 Lizenz und unterliegt dieser (override)
+[[annotations]]
+path = ["NOTICE"]
+precedence = "override"
+SPDX-FileCopyrightText = "2026 Sebastian Ritter"
+SPDX-License-Identifier = "Apache-2.0"
+
+# Das Projekt nutzt für Quelltext per Default die Apache-2.0 Lizenz, wenn nichts Anderes angegeben ist (closest)
+[[annotations]]
+path = ["Sources/**", "Tests/**"]
+precedence = "closest"
+SPDX-FileCopyrightText = "2026 Sebastian Ritter"
+SPDX-License-Identifier = "Apache-2.0"
+
+# Diese Datei `reuse.toml` und die Dokumentation werden ohne Lizenz daher Creative Commons Zero freigegeben, soweit nichts Anderes angegeben ist (closest)
+[[annotations]]
+path = ["reuse.toml", "Sources/files/files.docc/**"]
+precedence = "closest"
+SPDX-FileCopyrightText = "2026 Sebastian Ritter"
+SPDX-License-Identifier = "CC0-1.0"
+
